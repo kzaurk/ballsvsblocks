@@ -1,4 +1,4 @@
-package com.kzaurk.game.pingpong;
+package com.kzaurk.game.ballvsblocks;
 
 public enum KeyPressed {
     VK_LEFT,

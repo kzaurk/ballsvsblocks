@@ -1,9 +1,8 @@
-package com.kzaurk.game.pingpong;
+package com.kzaurk.game.ballvsblocks;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -16,7 +15,10 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import static com.kzaurk.game.pingpong.KeyPressed.*;
+import static com.kzaurk.game.ballvsblocks.KeyPressed.VK_LEFT;
+import static com.kzaurk.game.ballvsblocks.KeyPressed.VK_LEFT_RELEASE;
+import static com.kzaurk.game.ballvsblocks.KeyPressed.VK_RIGHT;
+import static com.kzaurk.game.ballvsblocks.KeyPressed.VK_RIGHT_RELEASE;
 
 public class GamePanel extends JPanel implements Runnable {
     public static final int WIDTH = 700;

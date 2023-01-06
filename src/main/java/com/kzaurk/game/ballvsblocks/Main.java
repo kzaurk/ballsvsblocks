@@ -1,20 +1,22 @@
-package com.kzaurk.game.pingpong;
+package com.kzaurk.game.ballvsblocks;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
+import com.kzaurk.game.ballvsblocks.GamePanel;
+
 public class Main {
     public static void main(String[] args) {
-        JFrame window = new JFrame("PingPong");
+        JFrame window = new JFrame("Ball vs blocks");
+        GamePanel gamePanel = new GamePanel();
+        window.add(gamePanel, BorderLayout.CENTER);
+        
         window.setVisible(true);
-        GamePanel board = new GamePanel();
-        window.add(board, BorderLayout.CENTER);
         window.pack();
-
         window.setLocationRelativeTo(null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        board.startGame();
+        gamePanel.startGame();
     }
 }

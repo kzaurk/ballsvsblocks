@@ -1,6 +1,4 @@
-package com.kzaurk.game.pingpong;
-
-import java.awt.Graphics2D;
+package com.kzaurk.game.ballvsblocks;
 
 import lombok.Getter;
 import lombok.Setter;

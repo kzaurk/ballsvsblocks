@@ -1,4 +1,4 @@
-package com.kzaurk.game.pingpong;
+package com.kzaurk.game.ballvsblocks;
 
 import java.awt.Color;
 import java.awt.Graphics;

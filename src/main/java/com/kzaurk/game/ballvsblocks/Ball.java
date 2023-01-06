@@ -1,6 +1,5 @@
-package com.kzaurk.game.pingpong;
+package com.kzaurk.game.ballvsblocks;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -35,8 +34,6 @@ public class Ball implements Rect{
     }
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-//        g2d.setColor(Color.RED);
-//        g2d.fillRect(x, y, WIDTH, WIDTH);
         g2d.drawImage(image, x, y, WIDTH, WIDTH, null, null);
     }
 
