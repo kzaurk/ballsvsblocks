@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter
-public class Block implements Rect{
+public class Block implements Rect {
     @Getter
     @Accessors(fluent = true)
     private int x;

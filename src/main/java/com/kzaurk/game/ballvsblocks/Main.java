@@ -4,14 +4,12 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
-import com.kzaurk.game.ballvsblocks.GamePanel;
-
 public class Main {
     public static void main(String[] args) {
         JFrame window = new JFrame("Ball vs blocks");
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel, BorderLayout.CENTER);
-        
+
         window.setVisible(true);
         window.pack();
         window.setLocationRelativeTo(null);

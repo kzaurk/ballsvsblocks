@@ -8,7 +8,10 @@ import java.awt.Rectangle;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 
-public class Platform implements Rect{
+public class Platform implements Rect {
+    private static final int SPEED = 3;
+    private static final int WIDTH = 40;
+    private static final int HEIGHT = 7;
     @Getter
     @Accessors(fluent = true)
     private int x;
@@ -24,12 +27,13 @@ public class Platform implements Rect{
 
     private int windowHeight;
     private int windowWidth;
-    private final int SPEED = 3;
+
+
     public Platform() {
         this.windowHeight = GamePanel.HEIGHT;
         this.windowWidth = GamePanel.WIDTH;
-        width = 60;
-        height = 7;
+        width = WIDTH;
+        height = HEIGHT;
         x = 0;
         y = windowHeight - height - 40;
     }

@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.experimental.Accessors;
 
-public class Ball implements Rect{
+public class Ball implements Rect {
     public static final int WIDTH = 20;
     @Getter
     @Accessors(fluent = true)
@@ -32,6 +32,7 @@ public class Ball implements Rect{
         yDirection = 1;
         speed = 1;
     }
+
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(image, x, y, WIDTH, WIDTH, null, null);

@@ -5,8 +5,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -23,28 +23,32 @@ import static com.kzaurk.game.ballvsblocks.KeyPressed.VK_RIGHT_RELEASE;
 public class GamePanel extends JPanel implements Runnable {
     public static final int WIDTH = 700;
     public static final int HEIGHT = 500;
-    private AtomicBoolean stopGame;
+    private static boolean startGame = false;
 
     public Thread gameThread;
+    public MouseHandler mouseHandler;
     private boolean leftPressed;
     private boolean rightPressed;
 
     public Platform platform;
     public Ball ball;
-    public BlocksPanel blocksPanel;
+    public BlocksGroup blocksPanel;
+    public StartGameButton startGameButton;
 
     public GamePanel() {
-        stopGame = new AtomicBoolean(false);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBackground(new Color(117, 116, 164));
         setDoubleBuffered(true);
         setFocusable(true);
         requestFocusInWindow();
         setKeyBindings();
+        mouseHandler = new MouseHandler(this::mousePressed, this::mouseReleased);
+        addMouseListener(mouseHandler);
 
         platform = new Platform();
         ball = new Ball();
-        blocksPanel = new BlocksPanel();
+        blocksPanel = new BlocksGroup();
+        startGameButton = new StartGameButton();
     }
 
     public void startGame() {
@@ -56,9 +60,13 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        blocksPanel.draw(g);
-        platform.draw(g);
-        ball.draw(g);
+        if (startGame) {
+            blocksPanel.draw(g);
+            platform.draw(g);
+            ball.draw(g);
+        } else {
+            startGameButton.draw(g);
+        }
         g.dispose();
     }
 
@@ -148,10 +156,26 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    private void mousePressed(MouseEvent e) {
+        if (!startGame) {
+            startGameButton.pressed(e.getX(), e.getY());
+            repaint();
+        }
+    }
+
+    private void mouseReleased(MouseEvent e) {
+        if (!startGame) {
+            startGameButton.released(e.getX(), e.getY());
+            startGame = true;
+            startGame();
+            repaint();
+        }
+    }
+
     @Override
     public void run() {
         try {
-            while (!stopGame.get()) {
+            while (startGame) {
                 update();
                 repaint();
                 Thread.sleep(5);
